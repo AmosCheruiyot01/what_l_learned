@@ -4,6 +4,13 @@
     width: 100vw;
 }
 
-.body_left_section{
-    background-color: rgba(0, 128, 0, 0.436);
+.body_left_section p{
+    background-color: rgba(128, 128, 128, 0.441);
+    width: 70%;
+    height: 20px;
+    text-align: center;
+    border-radius: 10px;
+    
 }
+
+

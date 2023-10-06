@@ -6,9 +6,82 @@
 
 .header_top{
     height: 30%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.dash_header{
+    font-size: 30px;
+    font-family: 'Croissant One', cursive;  
+    font-weight: 300;
+}
+
+.dash_logout button{
+    color: red !important;
+    font-family: 'Croissant One', cursive; 
+    font-size: larger; 
+    border-radius: 10px;
+    background-color: black;
+    border: none;
+
+
 }
 
 .header_bottom{
     height: 70%;
-    background-color: orange;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
+
+.input_form{
+    display: flex;
+    flex-direction: row;
+    width: 60%;
+   
+}
+
+.first_row{
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+
+.first_row p{
+    font-family: 'Croissant One', cursive; 
+}
+
+.first_row button{
+    font-family: 'Croissant One', cursive; 
+    height: fit-content;
+    border: none;
+    font-weight: bold;
+    font-size: larger;
+    border-radius: 10px;
+}
+
+.submit_button{
+    width: 30%;
+    height: 2rem;
+    align-self: center;
+    border-radius: 10px;
+    font-family: 'Croissant One', cursive; 
+    margin-top: 10px;
+    font-weight: bold;
+    border: none;
+
+}
+
+
+input, select{
+
+border: none;
+height: 2rem;
+background-color: rgba(255, 228, 196, 0.567);
+border-radius: 10px;
+width: 60%;
+}
+

@@ -5,13 +5,12 @@
 }
 
 .header{
-    background-color: rgba(0, 128, 0, 0.436);
 }
 
 .body{
-    background-color: rgba(0, 0, 255, 0.407);
+    /* background-color: rgba(0, 0, 255, 0.407); */
 }
 
 .footer{
-    background-color: rgba(255, 255, 0, 0.374);
+    /* background-color: rgba(255, 255, 0, 0.374); */
 }
