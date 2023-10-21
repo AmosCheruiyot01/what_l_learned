@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useForm } from 'react-hook-form';
-import { apiDomain } from '../../../utils/utils';
+import { apiDomain } from '../../utils/utils';
 import Axios from 'axios';
 
 function Login() {
