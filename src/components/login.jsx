@@ -1,11 +1,15 @@
 import React from 'react';
 import './login.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useForm } from 'react-hook-form';
+import { apiDomain } from '../../../utils/utils';
+import Axios from 'axios';
 
 function Login() {
+
+  const Navigate = useNavigate();
   // Define the schema for yup validation
   const schema = yup.object().shape({
     username: yup.string().required(),
@@ -22,9 +26,38 @@ function Login() {
     resolver: yupResolver(schema)
   });
 
-  const onSubmit = (data) => {
-    console.log(data);
-  };
+//   const onSubmit = async(data) => {
+//     console.log(data)
+//     await Axios.post(`${apiDomain}/login`, data)
+//     .then(({data}) => {
+//         if(data.token) {
+//           console.log(data.token)
+//             // dispatch({type: 'LOGIN_SUCCESS', payload: data})
+//             alert('login successful')
+//             Navigate('/dashboard')
+//         }
+//     })
+//     .catch(err => {
+//         alert('login failed!, error: ' + err.message)
+//     }
+//         )
+// }
+
+const onSubmit = async(data) => {
+  console.log(data)
+  await Axios.post(`${apiDomain}/login`, data)
+  .then(({data}) => {
+      if(data.token) {
+          // dispatch({type: 'LOGIN_SUCCESS', payload: data})
+          alert('login successful')
+          Navigate('/dashboard')
+      }
+  })
+  .catch(error => {
+    alert(error.response.data.error);
+  }
+      )
+}
 
   return (
     

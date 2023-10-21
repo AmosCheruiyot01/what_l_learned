@@ -1,12 +1,16 @@
 import './register.css'
 
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link,  useNavigate } from 'react-router-dom'
 import * as yup from 'yup'
 import {useForm} from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
+import { apiDomain } from '../../../utils/utils'
+import  Axios  from 'axios'
 
 function Register() {
+
+  const Navigate = useNavigate()  
 
 
   const schema = yup.object().shape({
@@ -19,19 +23,28 @@ function Register() {
         /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/,
         'Password must contain at least one uppercase letter, one lowercase letter, and one numeric digit'
       ),
-    confirmPassword: yup
-      .string()
-      .required('Confirm Password is required')
-      .oneOf([yup.ref('password'), null], 'Passwords must match'),
+    email: yup.string().email('Email must be a valid email').required('Email is required')
+    
   });
 
   const { register, handleSubmit, errors } = useForm({
     resolver: yupResolver(schema)
   })
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     console.log(data)
-  }
+    await Axios
+    .post(`${apiDomain}/register`, data)
+    .then((response) => {
+        console.log(response.data.message);
+        alert(response.data.message);
+        Navigate('/');
+    })
+    .catch((error) => {
+        console.log(error.response.data.error);
+        alert(error.response.data.error);
+        alert(error.message);
+    });  }
 
 
   return (
@@ -48,7 +61,7 @@ function Register() {
     </>
 
     <>
-    <input type="password" placeholder='confirm password' {...register("confirm_password")} />
+    <input type="email" placeholder='email' {...register("email")} />
     </>
 
     <input type="submit" className='btn' />
